@@ -15,8 +15,6 @@ router.use((req, res, next) => {
 
 router.get('/api/all', userController.allAccess);
 
-router.get('/api/user', [authJwt.verifyToken] ,userController.mainPage);
-
 router.post('/api/like', [authJwt.verifyToken], userController.postLike);
 
 module.exports = router;

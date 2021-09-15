@@ -77,7 +77,7 @@ exports.uploadImage = async (req, res) => {
           } catch {
             return res.status(201).send({
               message:
-                `Uploaded the file successfully: ${req.file.originalname}`,
+                `Uploaded the file successfully: ${req.file.originalname} but its not public`,
               url: publicUrl,
             });
           }
