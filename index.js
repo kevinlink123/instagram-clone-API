@@ -7,6 +7,7 @@ const db = require('./models');
 
 const authRoutes = require('./routes/auth.routes');
 const userRoutes = require('./routes/user.routes');
+const fileRoutes = require('./routes/file.routes');
 
 //DB Sync
 db.sequelize.sync();
@@ -18,6 +19,7 @@ app.use(express.json());
 //Routes
 app.use('/', authRoutes);
 app.use('/', userRoutes);
+app.use('/', fileRoutes);
 
 
 
