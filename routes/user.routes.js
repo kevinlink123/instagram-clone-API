@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 const { authJwt } = require('../middleware');
-const controller = require('../controllers/user.controller');
+
+const userController = require('../controllers/user.controller');
 
 router.use((req, res, next) => {
     res.header(
@@ -12,8 +13,10 @@ router.use((req, res, next) => {
     next();
 });
 
-router.get('/api/all', controller.allAccess);
+router.get('/api/all', userController.allAccess);
 
-router.get('/api/user', [authJwt.verifyToken] ,controller.mainPage);
+router.get('/api/user', [authJwt.verifyToken] ,userController.mainPage);
+
+router.post('/api/like', [authJwt.verifyToken], userController.postLike);
 
 module.exports = router;
