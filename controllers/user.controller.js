@@ -14,6 +14,12 @@ exports.mainPage = (req, res) => {
 };
 
 exports.postLike = async (req, res) => {
+    if(!req.body.imageId) {
+        return res.status(404).send({
+            message: "The image that you are trying to like doesn't exist!"
+        })
+    }
+    
     const [like, created] = await Like.findOrCreate({
         where: { 
             imageId: req.body.imageId,
