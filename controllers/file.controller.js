@@ -16,8 +16,7 @@ const getRanmdonNumber = () => {
 }
 
 exports.getAllImages = async (req, res) => {
-  
-  const images = await Image.findAll({ include: { model: Like, as: 'likes'} });
+  const images = await Image.findAll({ limit: req.query.pages * 3 ,include: { model: Like, as: 'likes'} });
 
   return res.status(200).send({
     images: images
